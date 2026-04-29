@@ -3,7 +3,9 @@ package at.hannibal2.skyhanni.config.features.misc
 import at.hannibal2.skyhanni.config.FeatureToggle
 import at.hannibal2.skyhanni.config.core.config.Position
 import com.google.gson.annotations.Expose
+import io.github.notenoughupdates.moulconfig.ChromaColour
 import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorBoolean
+import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorColour
 import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorDraggableList
 import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorKeybind
 import io.github.notenoughupdates.moulconfig.annotations.ConfigLink
@@ -79,6 +81,30 @@ class TrevorTheTrapperConfig {
     @ConfigEditorBoolean
     @FeatureToggle
     var solver: Boolean = true
+
+    @Expose
+    @ConfigOption(
+        name = "Trapper Solver - Bypass See",
+        desc = "Bypasses canSee check."
+    )
+    @ConfigEditorBoolean
+    @FeatureToggle
+    var solverBypassCanSee: Boolean = true
+
+    @Expose
+    @ConfigOption(
+        name = "Trapper Solver - Tracer",
+        desc = "Trace towards the mob."
+    )
+    @ConfigEditorBoolean
+    @FeatureToggle
+    var solverTracer: Boolean = true
+
+    @Expose
+    @ConfigOption(name = "Trapper Solver - Trace Line Color", desc = "Color of the trace line.")
+    @ConfigEditorColour
+    var traceLineColor: ChromaColour = ChromaColour.fromRGB(85, 255, 85, 0, 255)
+
 
     @Expose
     @ConfigOption(

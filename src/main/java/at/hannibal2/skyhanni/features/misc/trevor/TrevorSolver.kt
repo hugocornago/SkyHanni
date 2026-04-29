@@ -1,5 +1,6 @@
 package at.hannibal2.skyhanni.features.misc.trevor
 
+import at.hannibal2.skyhanni.SkyHanniMod
 import at.hannibal2.skyhanni.data.ElectionApi.derpy
 import at.hannibal2.skyhanni.data.mob.Mob
 import at.hannibal2.skyhanni.data.mob.MobData
@@ -30,6 +31,8 @@ object TrevorSolver {
     var mobCoordinates = LorenzVec(0.0, 0.0, 0.0)
     var mobLocation = TrapperMobArea.NONE
     var averageHeight = (minHeight + maxHeight) / 2
+
+    private val config get() = SkyHanniMod.feature.misc.trevorTheTrapper
 
     fun findMobHeight(height: Int, above: Boolean) {
         val playerPosition = LocationUtils.playerLocation().roundTo(2)
@@ -75,7 +78,7 @@ object TrevorSolver {
                     val isOasisMob = currentMob == TrevorMob.RABBIT || currentMob == TrevorMob.SHEEP
                     if (isOasisMob && mobLocation == TrapperMobArea.OASIS && !isTrevor) return
                     val canSee = entity.canBeSeen(currentMob.renderDistance) && !entity.isInvisible && !hasBlindness
-                    if (canSee) {
+                    if (canSee || config.solverBypassCanSee) {
                         if (mobLocation != TrapperMobArea.FOUND) {
                             TrevorFeatures.lastTitle?.stop()
                             TrevorFeatures.lastTitle = TitleManager.sendTitle("§2Saw ${currentMob.mobName}!")
