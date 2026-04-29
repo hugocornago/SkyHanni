@@ -39,7 +39,7 @@ import kotlin.time.times
 
 private const val DEBUG_PREFIX = "[SkyHanni Debug] §7"
 private const val USER_ERROR_PREFIX = "§c[SkyHanni] "
-private const val CHAT_PREFIX = "[SkyHanni] "
+private const val CHAT_PREFIX = ""
 
 @SkyHanniModule
 object ChatUtils {
