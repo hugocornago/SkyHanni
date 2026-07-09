@@ -26,7 +26,7 @@ plugins {
     id("net.fabricmc.fabric-loom") apply false
     kotlin("jvm")
     id("com.google.devtools.ksp")
-    `maven-publish`
+    // `maven-publish`
     id("dev.detekt")
 }
 
@@ -427,26 +427,26 @@ val sourcesJar by tasks.registering(Jar::class) {
     from(sourceSets.main.get().allSource)
 }
 
-publishing.publications {
-    create<MavenPublication>("maven") {
-        if (!isDeobf) artifact(tasks.named("remapJar"))
-        else artifact(tasks.shadowJar)
-        artifact(sourcesJar) { classifier = "sources" }
-        pom {
-            name.set("SkyHanni")
-            licenses {
-                license {
-                    name.set("GNU Lesser General Public License")
-                    url.set("https://github.com/hannibal002/SkyHanni/blob/HEAD/LICENSE")
-                }
-            }
-            developers {
-                developer { name.set("hannibal002") }
-                developer { name.set("The SkyHanni contributors") }
-            }
-        }
-    }
-}
+// publishing.publications {
+//     create<MavenPublication>("maven") {
+//         if (!isDeobf) artifact(tasks.named("remapJar"))
+//         else artifact(tasks.shadowJar)
+//         artifact(sourcesJar) { classifier = "sources" }
+//         pom {
+//             name.set("SkyHanni")
+//             licenses {
+//                 license {
+//                     name.set("GNU Lesser General Public License")
+//                     url.set("https://github.com/hannibal002/SkyHanni/blob/HEAD/LICENSE")
+//                 }
+//             }
+//             developers {
+//                 developer { name.set("hannibal002") }
+//                 developer { name.set("The SkyHanni contributors") }
+//             }
+//         }
+//     }
+// }
 
 detekt {
     buildUponDefaultConfig = true
