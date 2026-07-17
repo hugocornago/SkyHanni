@@ -166,7 +166,7 @@ object GardenCustomKeybinds {
             (config.fishingRod && FishingApi.holdingRod) ||
             (config.sunsGrasp && GardenApi.hasActiveSunsGrasp())
 
-    private fun isActive(): Boolean =
+    fun isActive(): Boolean =
         isEnabled() &&
             isHoldingTool() &&
             !hasGuiOpen() &&

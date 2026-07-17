@@ -75,6 +75,14 @@ class PestFinderConfig {
     var noPestTitle: Boolean = false
 
     @Expose
+    @ConfigOption(
+        name = "Only teleport while Garden Custom Keybinds",
+        desc = "Only teleport while Garden Custom Keybinds are enabled"
+    )
+    @ConfigEditorBoolean
+    var teleportIfGardenCustomKeybindsEnabled: Boolean = false
+
+    @Expose
     @ConfigOption(name = "Teleport Hotkey", desc = "Press this key to warp to the nearest plot with pests on it.")
     @ConfigEditorKeybind(defaultKey = GLFW.GLFW_KEY_UNKNOWN)
     var teleportHotkey: Int = GLFW.GLFW_KEY_UNKNOWN
